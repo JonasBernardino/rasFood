@@ -8,7 +8,7 @@ public class JPAUtil {
 
     private static final EntityManagerFactory RASFOOD = Persistence.createEntityManagerFactory("rasFood");
 
-    public static EntityManager geEntityManagerRasFood(){
+    public static EntityManager getEntityManagerRasFood(){
         return RASFOOD.createEntityManager();
     }
 }

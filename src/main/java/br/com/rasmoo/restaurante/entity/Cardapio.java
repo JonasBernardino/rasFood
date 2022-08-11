@@ -22,14 +22,12 @@ public class Cardapio {
     public Cardapio() {
     }
 
-    public Cardapio(Integer id, String nome, String descricao, Boolean disponivel, BigDecimal valor, Categoria categoria, LocalDateTime dataRegistro) {
-        this.id = id;
+    public Cardapio(String nome, String descricao, Boolean disponivel, BigDecimal valor, Categoria categoria) {
         this.nome = nome;
         this.descricao = descricao;
         this.disponivel = disponivel;
         this.valor = valor;
         this.categoria = categoria;
-        this.dataRegistro = dataRegistro;
     }
 
     public Integer getId() {
