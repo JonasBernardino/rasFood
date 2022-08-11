@@ -1,8 +1,6 @@
 package br.com.rasmoo.restaurante.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -10,14 +8,16 @@ import java.time.LocalDateTime;
 @Table(name = "pratos")
 public class Prato {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
     private String descricao;
     private Boolean disponivel;
     private BigDecimal valor;
+    @Column(name = "data_de_registro")
     private LocalDateTime dataRegistro = LocalDateTime.now();
 
-    public Prato(Integer id) {
+    public Prato() {
     }
 
     public Prato(Integer id, String nome, String descricao, Boolean disponivel, BigDecimal valor, LocalDateTime dataRegistro) {
