@@ -23,8 +23,7 @@ public class OrdensCardapio {
     public OrdensCardapio() {
     }
 
-    public OrdensCardapio(Ordem ordem, Cardapio cardapio, Integer quantidade) {
-        this.ordem = ordem;
+    public OrdensCardapio(Cardapio cardapio, Integer quantidade) {
         this.cardapio = cardapio;
         this.quantidade = quantidade;
         this.valor = cardapio.getValor();
@@ -74,7 +73,6 @@ public class OrdensCardapio {
     public String toString() {
         return "OrdensCardapio{" +
                 "id=" + id +
-                ", ordem=" + ordem +
                 ", cardapio=" + cardapio +
                 ", valor=" + valor +
                 ", quantidade=" + quantidade +
