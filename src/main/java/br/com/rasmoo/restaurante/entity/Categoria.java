@@ -24,7 +24,6 @@ public class Categoria {
     public Categoria() {
 
     }
-
     public void setId(Integer id) {
         this.id = id;
     }

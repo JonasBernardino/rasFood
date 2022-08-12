@@ -32,8 +32,6 @@ public class OrdemService {
         ordem.addOrdensCardapio(new OrdensCardapio(cardapioDao.consultarPorId(2),3 ));
         clienteDao.cadastrar(jonas);
         ordemDao.cadastrar(ordem);
-        System.out.println(ordem);
-        System.out.println(ordemDao.consultarItensMaisVendidos());
         entityManager.getTransaction().commit();
         entityManager.close();
     }

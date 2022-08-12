@@ -25,6 +25,11 @@ public class ClienteDao {
         String jpql = "SELECT c FROM Cliente c";
         return this.entityManager.createQuery(jpql,Cliente.class).getResultList();
     }
+    public List<Cliente> consultarPorNome(final String nome) {
+        String jpql = "SELECT c FROM Cliente c WHERE c.nome LIKE :nome ";
+        return this.entityManager.createQuery(jpql,Cliente.class).setParameter("nome","%"+ nome+"%").
+                getResultList();
+    }
 
     public void atualizar(final Cliente cliente) {
         this.entityManager.merge(cliente);
