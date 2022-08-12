@@ -12,6 +12,8 @@ public class Cliente {
 
     private String nome;
 
+    @Embedded
+    private Contato contato;
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Endereco> enderecoList = new ArrayList<>();
 
@@ -19,6 +21,15 @@ public class Cliente {
         endereco.setCliente(this);
         this.enderecoList.add(endereco);
     }
+
+    public Contato getContato() {
+        return contato;
+    }
+
+    public void setContato(Contato contato) {
+        this.contato = contato;
+    }
+
     public Cliente() {
     }
 
@@ -50,6 +61,7 @@ public class Cliente {
         return "Cliente{" +
                 "cpf='" + cpf + '\'' +
                 ", nome='" + nome + '\'' +
+                ", contato=" + contato +
                 ", enderecoList=" + enderecoList +
                 '}';
     }
