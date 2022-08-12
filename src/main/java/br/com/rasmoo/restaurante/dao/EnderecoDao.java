@@ -5,6 +5,10 @@ import br.com.rasmoo.restaurante.vo.ClienteVo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.List;
 import java.util.Objects;
 
@@ -54,6 +58,28 @@ public class EnderecoDao {
         }
 
         return typedQuery.getResultList();
+    }
+
+    public List<ClienteVo> consultarClientesUsandoCriteria(final String estado, final String cidade, final String rua) {
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<ClienteVo> criteriaQuery = builder.createQuery(ClienteVo.class);
+        Root<Endereco> root = criteriaQuery.from(Endereco.class);
+        criteriaQuery.multiselect(root.get("cliente").get("cpf"),root.get("cliente").get("nome"));
+        Predicate predicate = builder.and();
+
+        if (Objects.nonNull(estado)) {
+            predicate = builder.and(predicate, builder.equal(root.get("estado"), estado));
+        }
+        if (Objects.nonNull(cidade)) {
+            predicate = builder.and(predicate, builder.equal(root.get("cidade"), cidade));
+
+        }
+        if (Objects.nonNull(rua)) {
+            predicate = builder.and(predicate, builder.equal(root.get("rua"), rua));
+
+        }
+        criteriaQuery.where(predicate);
+        return entityManager.createQuery(criteriaQuery).getResultList();
     }
 
     public void atualizar(final Endereco endereco) {

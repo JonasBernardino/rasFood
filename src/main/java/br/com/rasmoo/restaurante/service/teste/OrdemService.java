@@ -34,7 +34,7 @@ public class OrdemService {
         clienteDao.cadastrar(jonas);
         ordemDao.cadastrar(ordem);
         EnderecoDao enderecoDao = new EnderecoDao(entityManager);
-        System.out.println(enderecoDao.consultarClientes("PB", null, null));
+        System.out.println(enderecoDao.consultarClientesUsandoCriteria("PB", null, null));
         entityManager.getTransaction().commit();
         entityManager.close();
     }
